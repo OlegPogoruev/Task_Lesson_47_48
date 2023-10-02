@@ -1,0 +1,28 @@
+
+Создание конфигурационого файла для PC
+sudo make defconfig
+sudo make menuconfig
+
+
+Команды и порядок сборки ядра на PC
+sudo make 
+sudo make modules
+sudo make modules install
+sudo make install
+
+
+
+
+Создание конфигурационого файла для ARM архитектуры
+sudo make ARCH=arm defconfig
+sudo make ARCH=arm menuconfig
+
+
+Сбор ядра для ARM архитектуры
+sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- 
+
+
+
+
+После сбора корневой файловой системы команда на запуск
+sudo qemu-system-arm -M vexpress-a9 -kernel zImage -dtb vexpress-v2p-ca9.dtb -initrd initramfs.cpio.gz -nographic -append "console=ttyAMA0 rdinit=/bin/ash"
